@@ -24,8 +24,6 @@ public class SaveServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-      //  final SimpleDateFormat sqlDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String salaryString = request.getParameter("salary");
