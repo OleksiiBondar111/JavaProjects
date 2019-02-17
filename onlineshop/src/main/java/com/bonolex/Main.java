@@ -9,10 +9,7 @@ import com.bonolex.onlineshop.service.DefaultUserServiceImpl;
 import com.bonolex.onlineshop.web.auth.AuthFilter;
 import com.bonolex.onlineshop.web.servlets.login.LoginServlet;
 import com.bonolex.onlineshop.web.servlets.login.LogoutServlet;
-import com.bonolex.onlineshop.web.servlets.product.AddProductServlet;
-import com.bonolex.onlineshop.web.servlets.product.DeleteProductServlet;
-import com.bonolex.onlineshop.web.servlets.product.EditProductServlet;
-import com.bonolex.onlineshop.web.servlets.product.ViewProductServlet;
+import com.bonolex.onlineshop.web.servlets.product.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -56,6 +53,7 @@ public class Main {
 
         LoginServlet loginServlet = new LoginServlet(defaultSecurityService);
         LogoutServlet logoutServlet = new LogoutServlet(defaultSecurityService);
+        StaticSourcesServlet staticSourcesServlet=new StaticSourcesServlet();
 
         //Mappings
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -65,6 +63,8 @@ public class Main {
         context.addServlet(new ServletHolder(editProductServlet), "/product/edit/*");
         context.addServlet(new ServletHolder(deleteProductServlet), "/product/delete/*");
         context.addServlet(new ServletHolder(logoutServlet), "/logout");
+        context.addServlet(new ServletHolder(staticSourcesServlet), "/styles");
+
 
         context.addFilter(new FilterHolder(new AuthFilter(defaultSecurityService)), "/product/*", EnumSet.of(DispatcherType.REQUEST));
 

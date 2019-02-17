@@ -1,7 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
 
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+
+        li {
+            border-right: 1px solid #bbb;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+    </style>
+    <!--<link rel="stylesheet" href="/styles">-->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,26 +47,58 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+        <title>Login page</title>
 </head>
 <body>
-<form action='login' method='post'>
-    <br>
-    <div class="form-group row">
-        <label for="inputLogin" class="col-sm-2 col-form-label">Login</label>
-        <div class="col-sm-4">
-            <input type="text" class="form-control" id="inputLogin" name='login'>
+<!--<div>-->
+    <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">-->
+        <!--<a class="navbar-brand" href='product/add'>Add New Product</a>-->
+        <!--<a class="navbar-brand" href="/login">Login</a>-->
+    <!--</nav>-->
+<!--</div>-->
+<div>
+    <ul>
+        <li><a href="/products">Home</a></li>
+        <li><a href="/product/add">Add new product</a></li>
+        <li style="float:right"><a href="/logout">Logout</a></li>
+        <li style="float:right"><a href="/login">Login</a></li>
+    </ul>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Login</h5>
+                    <form class="form-signin" action='login' method='post'>
+                        <div class="form-label-group">
+                            <label for="inputEmail"></label>
+                            <input type="email" id="inputEmail" name='login' class="form-control"
+                                   placeholder="Email address" required autofocus>
+                            <label for="inputPassword"></label>
+                            <input type="password" id="inputPassword" name='password' class="form-control"
+                                   placeholder="Password" required>
+                        </div>
+                        <br>
+                        <div>
+                            <#if message??>
+                                <div class="alert alert-danger">${message}</div>
+                            </#if>
+                        </div>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-4">
-            <input type="text" class="form-control" id="inputPassword" name='password'>
-        </div>
-    </div>
-    <#if message??><div class="">${message}</div></#if>
-     <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

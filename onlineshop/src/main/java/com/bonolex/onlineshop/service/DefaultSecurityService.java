@@ -23,15 +23,17 @@ public class DefaultSecurityService {
 
     public Session login(String name, String password) {
         User user = defaultUserService.findByName(name);
-        String generatedPassword = MD5Hash.getMD5HashValue(password + user.getSalt());
-        if (user.getPassword().equals(generatedPassword)) {
-            Session session = new Session();
-            String token = UUID.randomUUID().toString();
-            session.setToken(token);
-            session.setUser(user);
-            session.setExpiredDate(LocalDateTime.now().plusHours(2));
-            sessionList.add(session);
-            return session;
+        if(user!=null) {
+            String generatedPassword = MD5Hash.getMD5HashValue(password + user.getSalt());
+            if (user.getPassword().equals(generatedPassword)) {
+                Session session = new Session();
+                String token = UUID.randomUUID().toString();
+                session.setToken(token);
+                session.setUser(user);
+                session.setExpiredDate(LocalDateTime.now().plusHours(2));
+                sessionList.add(session);
+                return session;
+            }
         }
         return null;
     }

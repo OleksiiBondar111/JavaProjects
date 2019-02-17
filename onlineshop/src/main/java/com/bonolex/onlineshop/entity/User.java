@@ -4,18 +4,18 @@ package com.bonolex.onlineshop.entity;
  * Created by OBondar on 10.02.2019.
  */
 public class User {
-    private int Id;
+    private int id;
     private String name;
     private String role;
     private String password;
     private String salt;
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -53,7 +53,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", role='" + role + '\'' +
                 ", password='" + password + '\'' +
